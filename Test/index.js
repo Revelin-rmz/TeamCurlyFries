@@ -7,41 +7,89 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+// id variable for the userID
+var id = 0;
+
 // MongoDB connection URI and options
+
 const uri = 'mongodb+srv://Muneeb:MuneebZaidi786@cluster0.jspmhtb.mongodb.net/';
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-async function run() {
+async function poll(pollName, game, devUser, pollQuestion, dateMade, dateEnded, pollOption1, pollOption2, pollOption3, pollOption4) {
   try {
     // Connect to the MongoDB server
+
     await client.connect();
-    console.log("Connected to MongoDB");
 
     // Select the database and collection
     const database = client.db('userDetails');
-    const collection = database.collection('upVoteCollection');
+    const collection = database.collection('poll');
 
-    // Get user input for poll description and option
-    rl.question('Enter the poll description: ', (pollDescription) => {
-      rl.question('Enter the option: ', async (option) => {
-        // Create the document to be inserted
-        const pollDocument = {
-          poll_description: pollDescription,
-          option: option
-        };
+    // Create the document to be inserted
+    const pollDocument = {
+      user_ID: id,
+      poll_name: pollName,
+      game: game,
+      dev_user: devUser,
+      poll_question: pollQuestion,
+      date_made: dateMade,
+      date_ended: dateEnded,
+      poll_option1: pollOption1,
+      poll_option2: pollOption2,
+      poll_option3: pollOption3,
+      poll_option4: pollOption4
+    };
 
-        // Insert the document into the collection
-        const result = await collection.insertOne(pollDocument);
-        console.log(`Document inserted with _id: ${result.insertedId}`);
+    // Increment id
+    id++;
 
-        // Close the readline interface and MongoDB connection
-        rl.close();
-        await client.close();
-      });
-    });
+    // Insert the document into the collection
+    const result = await collection.insertOne(pollDocument);
+    console.log(`Document inserted with _id: ${result.insertedId}`);
+
+    // Close the readline interface and MongoDB connection
+    rl.close();
+    await client.close();
+
   } catch (err) {
     console.error(err);
   }
 }
 
-run();
+//poll("EPIC UPDATE", "League", "Yousif Salman", "Do you want this epic that upgrades sett damages to 2000?", "2024-05-18", "2024-05-14", "Yes", "No", "maybe", "Your Gay");
+
+async function devTable(pollName, game, devUser, pollQuestion) {
+    try {
+      // Connect to the MongoDB server
+  
+      await client.connect();
+  
+      // Select the database and collection
+      const database = client.db('userDetails');
+      const collection = database.collection('poll');
+  
+      // Create the document to be inserted
+      const pollDocument = {
+        user_ID: id,
+        poll_name: pollName,
+        game: game,
+        dev_user: devUser,
+      };
+  
+      // Increment id
+      id++;
+  
+      // Insert the document into the collection
+      const result = await collection.insertOne(pollDocument);
+      console.log(`Document inserted with _id: ${result.insertedId}`);
+  
+      // Close the readline interface and MongoDB connection
+      rl.close();
+      await client.close();
+  
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
