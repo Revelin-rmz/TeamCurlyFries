@@ -1,19 +1,25 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import DevDashboard from './components/DevDashboard';
-import VoterDashboard from './components/VoterDashboard';
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import HomePage from './HomePage';
+// import DeveloperDashboard from './DeveloperDashboard';
+// import VoterDashboard from './VoterDashboard';
+
+
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/dev-dashboard" component={DevDashboard} />
-        <Route path="/voter-dashboard" component={VoterDashboard} />
-      </Switch>
-    </Router>
-  );
+    <GoogleLogin
+        onSuccess={credentialResponse => {
+        const credentialResponseDecoded = jwtDecode(credentialResponse.credential);
+        console.log(credentialResponseDecoded)
+        }}
+        onError={() => {
+        console.log('Login Failed');
+        }}
+    />
+  )
 }
 
 export default App;
