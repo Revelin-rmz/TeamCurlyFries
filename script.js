@@ -46,4 +46,36 @@ function updateResultsChart() {
             }
         }
     });
+
+
+
+    
+}
+
+function submitPoll() {
+    const form = document.getElementById('create-poll-form');
+    const formData = new FormData(form);
+
+    const pollData = {
+        poll_name: formData.get('poll_name'),
+        game: formData.get('game'),
+        user: formData.get('user'),
+        poll_question: formData.get('poll_question'),
+        date_made: formData.get('date_made'),
+        date_ended: formData.get('date_ended'),
+        poll_option1: formData.get('poll_option1'),
+        poll_option2: formData.get('poll_option2'),
+        poll_option3: formData.get('poll_option3'),
+        poll_option4: formData.get('poll_option4')
+    };
+
+    console.log("Poll Created:", pollData);
+    console.log("Poll Question:", pollData.poll_question);
+    console.log("Poll Question:", pollData.poll_question);
+    console.log("Poll Question:", pollData.poll_question);
+    console.log("Poll Question:", pollData.poll_question);
+
+       // Add functionality to save the poll data to the server or local storage
+    alert(pollData.poll_question);
+    showPage('home-page');
 }

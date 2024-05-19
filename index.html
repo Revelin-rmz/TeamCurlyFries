@@ -16,6 +16,7 @@
                 <a href="#" onclick="showPage('home-page')">Home</a>
                 <a href="#" onclick="showPage('poll-page')">Poll</a>
                 <a href="#" onclick="showPage('results-page')">Results</a>
+                <a href="#" onclick="showPage('createPolls-page')">Create Polls</a>
             </nav>
         </header>
         <main>
@@ -35,6 +36,8 @@
                 <a href="#" onclick="showPage('home-page')">Home</a>
                 <a href="#" onclick="showPage('poll-page')">Poll</a>
                 <a href="#" onclick="showPage('results-page')">Results</a>
+                <a href="#" onclick="showPage('createPolls-page')">Create Polls</a>
+
             </nav>
         </header>
         <main>
@@ -64,6 +67,8 @@
                 <a href="#" onclick="showPage('home-page')">Home</a>
                 <a href="#" onclick="showPage('poll-page')">Poll</a>
                 <a href="#" onclick="showPage('results-page')">Results</a>
+                <a href="#" onclick="showPage('createPolls-page')">Create Polls</a>
+
             </nav>
         </header>
         <main>
@@ -73,6 +78,61 @@
             </section>
         </main>
     </div>
+
+
+<!-- Create Polls Page -->
+<div id="createPolls-page" class="page">
+    <header>
+        <h1>Create a New Poll</h1>
+        <nav>
+            <a href="#" onclick="showPage('home-page')">Home</a>
+            <a href="#" onclick="showPage('poll-page')">Poll</a>
+            <a href="#" onclick="showPage('results-page')">Results</a>
+            <a href="#" onclick="showPage('createPolls-page')">Create Polls</a>
+        </nav>
+    </header>
+    <main>
+        <section class="create-poll">
+            <h2>Enter Poll Details</h2>
+            <form id="create-poll-form">
+                <label for="poll_name">Poll Name:</label>
+                <input type="text" id="poll_name" name="poll_name" required>
+                
+                <label for="game">Game:</label>
+                <input type="text" id="game" name="game" required>
+                
+                <label for="user">User:</label>
+                <input type="text" id="user" name="user" required>
+                
+                <label for="poll_question">Poll Question:</label>
+                <input type="text" id="poll_question" name="poll_question" required>
+                
+                <label for="date_made">Date Made:</label>
+                <input type="date" id="date_made" name="date_made" required>
+                
+                <label for="date_ended">Date Ended:</label>
+                <input type="date" id="date_ended" name="date_ended" required>
+                
+                <label for="poll_option1">Poll Option 1:</label>
+                <input type="text" id="poll_option1" name="poll_option1" required>
+                
+                <label for="poll_option2">Poll Option 2:</label>
+                <input type="text" id="poll_option2" name="poll_option2" required>
+                
+                <label for="poll_option3">Poll Option 3:</label>
+                <input type="text" id="poll_option3" name="poll_option3">
+                
+                <label for="poll_option4">Poll Option 4:</label>
+                <input type="text" id="poll_option4" name="poll_option4">
+                
+                <button type="button" onclick="submitPoll()">Create Poll</button>
+            </form>
+        </section>
+    </main>
+</div>
+
+
+
 
     <script src="script.js"></script>
 </body>
